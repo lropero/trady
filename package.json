@@ -1,0 +1,31 @@
+{
+  "name": "trady",
+  "version": "0.1.0",
+  "description": "Your trading best friend.",
+  "scripts": {
+    "clean": "npx rimraf npm-*.log && npx rimraf package-lock.json && npx -p rimraf rimraf node_modules && npm cache verify",
+    "lint": "npx prettier-standard --lint",
+    "nuke": "npm run clean && npm install",
+    "start": "node index.js",
+    "upgrade": "npx upgradeps -n"
+  },
+  "dependencies": {
+    "array-shuffle": "^2.0.0",
+    "beeper": "^2.1.0",
+    "chalk": "^4.1.0",
+    "date-fns": "^2.19.0",
+    "dotenv": "^8.2.0",
+    "figures": "^3.2.0",
+    "node-binance-api": "^0.12.5",
+    "rxjs": "^6.6.7",
+    "tulind": "^0.8.18"
+  },
+  "devDependencies": {
+    "prettier-standard": "^16.4.1",
+    "rimraf": "^3.0.2",
+    "upgradeps": "^1.4.3"
+  },
+  "author": "Luciano Ropero <lropero@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true
+}
