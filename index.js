@@ -5,13 +5,16 @@ const chalk = require('chalk')
 const dotenv = require('dotenv')
 const tulind = require('tulind')
 const { cross, tick } = require('figures')
-const { format } = require('date-fns')
+const { format, formatDistance } = require('date-fns')
 const { interval } = require('rxjs')
 const { repeat, take } = require('rxjs/operators')
 
 const { version } = require('./package.json')
 
 dotenv.config()
+
+const delay = 5000
+const timeframe = '4h'
 
 const binance = new Binance().options({
   APIKEY: process.env.APIKEY,
@@ -106,16 +109,16 @@ const run = async () => {
     console.log(chalk.green(`Trady v${version}`))
     const prices = await binance.prices()
     const pairs = arrayShuffle(Object.keys(prices).filter(pair => pair.endsWith('BTC') || pair.endsWith('BUSD') || pair.endsWith('USDT')))
-    console.log(chalk.cyan(`Analyzing ${pairs.length} pairs`))
+    console.log(chalk.cyan(`Analyzing ${pairs.length} pairs, ${timeframe} charts, repeating ${formatDistance(delay * pairs.length, 0, { addSuffix: true })}`))
     let hyphen = false
-    interval(8000)
+    interval(delay)
       .pipe(take(pairs.length), repeat())
       .subscribe(async index => {
         try {
           const pair = pairs[index]
-          const candlesticks = await getCandlesticks(pair, '1h')
+          const candlesticks = await getCandlesticks(pair, timeframe)
           const chart = await getChart(candlesticks)
-          const trigger = chart[chart.length - 1].low <= chart[chart.length - 1].indicators.bbands_lower || chart[chart.length - 2].low <= chart[chart.length - 2].indicators.bbands_lower
+          const trigger = chart[chart.length - 1].low <= chart[chart.length - 1].indicators[0].bbands_lower || chart[chart.length - 2].low <= chart[chart.length - 2].indicators[0].bbands_lower
           if (trigger) {
             hyphen && console.log('')
             log(`${chalk.magenta(pair)} ${chalk.green(tick)}`)
