@@ -25,6 +25,8 @@ APIKEY=<YOUR_API_KEY>
 APISECRET=<YOUR_API_SECRET>
 ```
 
+- Edit `strategies.js` file with your strategies (refer to [strategies.js](https://github.com/lropero/trady/blob/master/strategies.js))
+
 ### Usage
 
 ```sh
