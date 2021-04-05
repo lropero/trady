@@ -5,6 +5,7 @@ Crypto market scanner.
 ### Requires
 
 - [Node v14.16.0](https://nodejs.org/)
+- npm v7.8.0
 - Node.js native addon build tool → [node-gyp](https://github.com/nodejs/node-gyp)
 
 ### Download
@@ -54,7 +55,7 @@ node index.js -b
 
 ##### `-d` / `--delay`
 
-Interval time (default 10)
+Interval time in seconds (default 10)
 
 ```sh
 node index.js -d 5
