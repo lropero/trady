@@ -3,7 +3,7 @@ module.exports = {
   example: {
     baseSymbols: ['BTC', 'USDT'],
     configIndicators: {
-      bb: {
+      someName: {
         identifier: 'bbands',
         options: {
           period: 20,
@@ -11,13 +11,14 @@ module.exports = {
         }
       }
     },
+    limit: 20, // amount of candles required for this strategy to work
     skipPairs: ['BTCUSDT'],
-    timeframe: '4h',
+    timeframes: ['4h'],
     trigger: chart => {
       const candle = chart[chart.length - 1] // live candle, use chart[chart.length - 2] for last closed candle
-      return candle.low <= candle.indicators.bb.bbands_lower
+      return candle.low <= candle.indicators.someName.bbands_lower
     }
-  }
+  },
   */
   bands: {
     baseSymbols: ['BUSD', 'USDT'],
@@ -30,10 +31,12 @@ module.exports = {
         }
       }
     },
-    timeframe: '4h',
+    limit: 20,
+    timeframes: ['4h'],
     trigger: chart => chart[chart.length - 1].low <= chart[chart.length - 1].indicators.bb.bbands_lower || chart[chart.length - 2].low <= chart[chart.length - 2].indicators.bb.bbands_lower
   },
   taz: {
+    // https://www.swing-trade-stocks.com/traders-action-zone.html
     baseSymbols: ['BTC'],
     configIndicators: {
       fast: {
@@ -49,10 +52,12 @@ module.exports = {
         }
       }
     },
-    timeframe: '4h',
+    limit: 30,
+    timeframes: ['4h'],
     trigger: chart => chart[chart.length - 1].low > chart[chart.length - 1].indicators.fast.ema && chart[chart.length - 1].low < chart[chart.length - 1].indicators.slow.sma
   },
   vsa: {
+    // VSA's stopping volume
     baseSymbols: ['BTC', 'BUSD', 'USDT'],
     configIndicators: {
       range: {
@@ -62,16 +67,17 @@ module.exports = {
         }
       }
     },
-    timeframe: '4h',
+    limit: 50,
+    timeframes: ['4h', '1d'],
     trigger: chart => {
       const candle = chart[chart.length - 2]
-      // check if last candle is a local low
+      // check if candle is a local low (10 candles)
       if (candle.low === Math.min(...chart.slice(chart.length - 11, chart.length - 1).map(candle => candle.low))) {
-        // check if volume is larger than previous candles
+        // check if volume is larger than previous 5 candles
         if (candle.volume === Math.max(...chart.slice(chart.length - 6, chart.length - 1).map(candle => candle.volume))) {
-          // check if range is larger than previous candles
+          // check if range is larger than previous 3 candles
           if (candle.indicators.range.atr === Math.max(...chart.slice(chart.length - 4, chart.length - 1).map(candle => candle.indicators.range.atr))) {
-            // check if price is rejected
+            // check if price is rejected (close above 60% of candle's range)
             return (candle.close - candle.low) / (candle.high - candle.low) >= 0.6
           }
         }

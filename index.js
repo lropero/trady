@@ -17,9 +17,8 @@ dotenv.config()
 
 const binance = new Binance().options({ APIKEY: process.env.APIKEY, APISECRET: process.env.APISECRET })
 const isWindows = process.platform === 'win32'
-const limit = 50
 
-const getCandlesticks = async (pair, timeframe) => {
+const getCandlesticks = async (pair, timeframe, limit) => {
   const candlesticks = await new Promise((resolve, reject) => {
     binance.candlesticks(
       pair,
@@ -108,7 +107,7 @@ const run = async options => {
       strategyNames.forEach(strategyName => {
         const strategy = strategies[strategyName]
         if (!(strategy.skipPairs ?? []).includes(pair) && strategy.baseSymbols.some(symbol => pair.endsWith(symbol))) {
-          temps.push(`${strategy.timeframe}-${strategyName}`)
+          strategy.timeframes.forEach(timeframe => temps.push(`${timeframe}-${strategyName}`))
         }
       })
       temps.sort().forEach(temp => {
@@ -134,10 +133,12 @@ const run = async options => {
         try {
           const key = keys[index]
           const [pair, timeframe] = key.split('-')
-          const candlesticks = await getCandlesticks(pair, timeframe)
+          const strategyNames = pings[key]
+          const limit = Math.max(...strategyNames.map(strategyName => strategies[strategyName].limit))
+          const candlesticks = await getCandlesticks(pair, timeframe, limit)
           const triggers = []
           await Promise.all(
-            pings[key].map(async strategyName => {
+            strategyNames.map(async strategyName => {
               const strategy = strategies[strategyName]
               const chart = await getChart(candlesticks, strategy.configIndicators)
               if (strategy.trigger(chart)) {

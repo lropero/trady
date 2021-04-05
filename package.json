@@ -1,6 +1,6 @@
 {
   "name": "trady",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Crypto market scanner.",
   "scripts": {
     "clean": "npx rimraf npm-*.log && npx rimraf package-lock.json && npx -p rimraf rimraf node_modules && npm cache verify",
