@@ -87,6 +87,7 @@ const log = message => {
 const run = async options => {
   try {
     console.log(`${chalk.green(`Trady v${version}`)} ${chalk[isWindows ? 'white' : 'gray'](`${line} run with -h to output usage information`)}`)
+    console.log(chalk.yellow(`Like it? Buy me a ${isWindows ? 'beer' : '🍺'} :) 1B7owVfYhLjWLh9NWivQAKJHBcf8Doq54i (BTC)`))
     const baseSymbols = Object.values(strategies).reduce((baseSymbols, strategy) => [...new Set(baseSymbols.concat(strategy.baseSymbols))], [])
     const delay = options.delay
     const prices = await binance.prices()
