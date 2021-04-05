@@ -6,7 +6,7 @@ Crypto market scanner.
 
 - [Node v14.16.0](https://nodejs.org/)
 - npm v7.8.0
-- Node.js native addon build tool → [node-gyp](https://github.com/nodejs/node-gyp)
+- Node.js native addon build tool → [node-gyp](https://github.com/nodejs/node-gyp) (_required by [Tulip Node](https://www.npmjs.com/package/tulind)_)
 
 ### Download
 
