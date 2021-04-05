@@ -20,7 +20,7 @@ $ npm ci
 
 ### Configuration
 
-- Create `.env` file with your Binance keys (_required for chart retrieval_):
+- Create `.env` file with your Binance reading-only keys (_required for chart retrieval_):
 
 ```sh
 APIKEY=<YOUR_API_KEY>
@@ -32,7 +32,7 @@ APISECRET=<YOUR_API_SECRET>
 ### Usage
 
 ```sh
-$ npm run start // will run 'node index.js -b -s'
+$ npm run start # will run 'node index.js -b -s'
 ```
 
 ### Options
