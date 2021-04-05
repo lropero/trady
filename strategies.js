@@ -3,24 +3,30 @@ module.exports = {
   example: {
     baseSymbols: ['BTC', 'USDT'],
     configIndicators: {
-      someName: {
-        identifier: 'bbands',
+      fast: {
+        identifier: 'sma',
         options: {
-          period: 20,
-          stddev: 2
+          period: 50
+        }
+      },
+      slow: {
+        identifier: 'sma',
+        options: {
+          period: 200
         }
       }
     },
-    limit: 20, // amount of candles required for this strategy to work
+    limit: 200, // amount of candles required for this strategy to work
     skipPairs: ['BTCUSDT'],
-    timeframes: ['4h'],
+    timeframes: ['4h', '1d'],
     trigger: chart => {
-      const candle = chart[chart.length - 1] // live candle, use chart[chart.length - 2] for last closed candle
-      return candle.low <= candle.indicators.someName.bbands_lower
+      const candle = chart[chart.length - 1] // live candle, use chart[chart.length - 1] for last closed candle
+      return candle.indicators.fast.sma < candle.indicators.slow.sma && candle.top >= candle.indicators.fast.sma
     }
   },
   */
   bands: {
+    // Triggers when price touched lower Bollinger band
     baseSymbols: ['BUSD', 'USDT'],
     configIndicators: {
       bb: {
@@ -54,7 +60,7 @@ module.exports = {
     },
     limit: 30,
     timeframes: ['4h'],
-    trigger: chart => chart[chart.length - 1].low > chart[chart.length - 1].indicators.fast.ema && chart[chart.length - 1].low < chart[chart.length - 1].indicators.slow.sma
+    trigger: chart => chart[chart.length - 2].low > chart[chart.length - 2].indicators.fast.ema && chart[chart.length - 2].low < chart[chart.length - 2].indicators.slow.sma
   },
   vsa: {
     // VSA's stopping volume
