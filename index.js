@@ -89,7 +89,6 @@ const run = async options => {
     console.log(`${chalk.green(`Trady v${version}`)} ${chalk[isWindows ? 'white' : 'gray'](`${line} run with -h to output usage information`)}`)
     console.log(chalk.yellow(`Like it? Buy me a ${isWindows ? 'beer' : '🍺'} :) 1B7owVfYhLjWLh9NWivQAKJHBcf8Doq54i (BTC)`))
     const baseSymbols = Object.values(strategies).reduce((baseSymbols, strategy) => [...new Set(baseSymbols.concat(strategy.baseSymbols))], [])
-    const delay = options.delay
     const prices = await binance.prices()
     const pairs = Object.keys(prices)
       .filter(pair => {
@@ -122,10 +121,10 @@ const run = async options => {
       return pings
     }, {})
     const keys = Object.keys(pings)
-    console.log(chalk.cyan(`Scanning ${pairs.length} pairs${keys.length > pairs.length ? ` (${keys.length} pings)` : ''}, running strateg${strategyNames.length > 1 ? 'ies' : 'y'} ${strategyNames.join(' and ')}, ${options.repeat !== 1 ? 'repeating ' : 'completing '}${formatDistance(delay * 1000 * keys.length, 0, { addSuffix: true })}`))
+    console.log(chalk.cyan(`Scanning ${pairs.length} pairs${keys.length > pairs.length ? ` (${keys.length} pings)` : ''}, running strateg${strategyNames.length > 1 ? 'ies' : 'y'} ${strategyNames.join(' and ')}, ${options.repeat !== 1 ? 'repeating ' : 'completing '}${formatDistance(options.delay * 1000 * keys.length, 0, { addSuffix: true })}`))
     let count = 0
     let divider = false
-    interval(delay * 1000)
+    interval(options.delay * 1000)
       .pipe(
         take(keys.length),
         tap(() => count++),
