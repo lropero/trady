@@ -73,12 +73,12 @@ module.exports = {
         }
       }
     },
-    limit: 50,
+    limit: 20,
     timeframes: ['4h', '1d'],
     trigger: chart => {
       const candle = chart[chart.length - 2]
-      // check if candle is a local low (10 candles)
-      if (candle.low === Math.min(...chart.slice(chart.length - 11, chart.length - 1).map(candle => candle.low))) {
+      // check if candle is a local low (12 candles)
+      if (candle.low === Math.min(...chart.slice(chart.length - 13, chart.length - 1).map(candle => candle.low))) {
         // check if volume is larger than previous 5 candles
         if (candle.volume === Math.max(...chart.slice(chart.length - 6, chart.length - 1).map(candle => candle.volume))) {
           // check if range is larger than previous 3 candles
