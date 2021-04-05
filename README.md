@@ -39,7 +39,7 @@ $ npm run start # will run 'node index.js -b -s'
 
 ##### `-h` / `--help`
 
-Display help for command
+Display help
 
 ```sh
 node index.js -h
