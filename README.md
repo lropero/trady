@@ -5,6 +5,7 @@ Crypto market scanner.
 ### Requires
 
 - [Node v14.16.0](https://nodejs.org/)
+- Node.js native addon build tool → [node-gyp](https://github.com/nodejs/node-gyp)
 
 ### Download
 
