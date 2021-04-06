@@ -20,8 +20,8 @@ module.exports = {
     skipPairs: ['BTCUSDT'],
     timeframes: ['4h', '1d'],
     trigger: chart => {
-      const candle = chart[chart.length - 1] // live candle, use chart[chart.length - 1] for last closed candle
-      return candle.indicators.fast.sma < candle.indicators.slow.sma && candle.top >= candle.indicators.fast.sma
+      const lastCandle = chart[chart.length - 1] // live candle, use chart[chart.length - 2] for last closed candle
+      return lastCandle.indicators.fast.sma < lastCandle.indicators.slow.sma && lastCandle.top >= lastCandle.indicators.fast.sma
     }
   },
   */
@@ -76,7 +76,7 @@ module.exports = {
     limit: 20,
     timeframes: ['4h', '1d'],
     trigger: chart => {
-      const candle = chart[chart.length - 2]
+      const candle = chart[chart.length - 2] // last closed candle
       // check if candle is a local low (12 candles)
       if (candle.low === Math.min(...chart.slice(chart.length - 13, chart.length - 1).map(candle => candle.low))) {
         // check if volume is larger than previous 5 candles
