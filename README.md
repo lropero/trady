@@ -27,7 +27,7 @@ APIKEY=<YOUR_API_KEY>
 APISECRET=<YOUR_API_SECRET>
 ```
 
-- Edit `strategies.js` file with your strategies (refer to [strategies.js](https://github.com/lropero/trady/blob/master/strategies.js) and [Tulip's indicators](https://tulipindicators.org/list))
+- Edit `strategies.js` file with your strategies (refer to [strategies.js](https://github.com/lropero/trady/blob/main/strategies.js) and [Tulip's indicators](https://tulipindicators.org/list))
 
 ### Usage
 
