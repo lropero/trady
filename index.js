@@ -150,9 +150,9 @@ const run = async options => {
             divider && console.log('')
             divider = false
             options.beep && beeper(3)
-            log(`${chalk.green(tick)} ${chalk.yellow(pair)}${chalk.blue(arrowRight)}${chalk.yellow(timeframe)} ${chalk.cyan(triggers.join(' and '))}`)
+            log(`${chalk.green(tick)} ${chalk.cyan(pair)}${chalk.magenta(arrowRight)}${chalk.cyan(timeframe)} ${chalk.green(triggers.join(' and '))}`)
           } else {
-            process.stdout.write(`${divider ? chalk.magenta('|') : ''}${chalk[isWindows ? 'white' : 'gray'](pair)}${chalk.blue(arrowRight)}${chalk[isWindows ? 'white' : 'gray'](timeframe)}`)
+            process.stdout.write(options.info ? `${divider ? chalk.yellow('|') : ''}${chalk[isWindows ? 'white' : 'gray'](pair)}${chalk.magenta(arrowRight)}${chalk[isWindows ? 'white' : 'gray'](timeframe)}` : chalk.blue('.'))
             divider = true
           }
         } catch (error) {
@@ -190,6 +190,7 @@ const sliceIndicators = (indicators, index) => {
 program
   .option('-b, --beep', 'sound alerts (default false)')
   .option('-d, --delay <seconds>', 'interval time in seconds (default 10)')
+  .option('-i, --info', 'show info (default false)')
   .option('-r, --repeat <times>', '0 repeats forever (default 1)')
   .option('-s, --shuffle', 'shuffle pairs (default false)')
   .parse(process.argv)
@@ -199,6 +200,7 @@ const options = program.opts()
 run({
   beep: !!options.beep,
   delay: parseInt(options.delay, 10) || 10,
+  info: !!options.info,
   repeat: parseInt(options.repeat, 10) === 0 ? 0 : parseInt(options.repeat, 10) || 1,
   shuffle: !!options.shuffle
 })

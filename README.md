@@ -53,7 +53,7 @@ Sound alerts (default false)
 node index.js -b
 ```
 
-##### `-d` / `--delay`
+##### `-d` / `--delay <seconds>`
 
 Interval time in seconds (default 10)
 
@@ -61,7 +61,15 @@ Interval time in seconds (default 10)
 node index.js -d 5
 ```
 
-##### `-r` / `--repeat`
+##### `-i` / `--info`
+
+Show info (default false)
+
+```sh
+node index.js -i
+```
+
+##### `-r` / `--repeat <times>`
 
 0 repeats forever (default 1)
 

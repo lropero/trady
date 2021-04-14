@@ -1,12 +1,12 @@
 {
   "name": "trady",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Crypto market scanner.",
   "scripts": {
     "clean": "npx rimraf npm-*.log && npx rimraf package-lock.json && npx -p rimraf rimraf node_modules && npm cache verify",
     "lint": "npx prettier-standard --lint",
     "nuke": "npm run clean && npm install",
-    "start": "node index.js -b -s",
+    "start": "node index.js -b -i -s",
     "upgrade": "npx upgradeps -n"
   },
   "dependencies": {
@@ -14,7 +14,7 @@
     "beeper": "^2.1.0",
     "chalk": "^4.1.0",
     "commander": "^7.2.0",
-    "date-fns": "^2.20.2",
+    "date-fns": "^2.21.0",
     "dotenv": "^8.2.0",
     "figures": "^3.2.0",
     "node-binance-api": "^0.12.5",
