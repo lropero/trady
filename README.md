@@ -32,7 +32,7 @@ APISECRET=<YOUR_API_SECRET>
 ### Usage
 
 ```sh
-$ npm run start # will run 'node index.js -b -s'
+$ npm run start # will run 'node index.js -b -i -s'
 ```
 
 ### Options
