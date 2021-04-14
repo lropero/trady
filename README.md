@@ -32,7 +32,7 @@ APISECRET=<YOUR_API_SECRET>
 ### Usage
 
 ```sh
-$ npm run start # will run 'node index.js -b -i -s'
+$ npm run start # will run 'node trady.js -b -i -s'
 ```
 
 ### Options
@@ -42,7 +42,7 @@ $ npm run start # will run 'node index.js -b -i -s'
 Display help
 
 ```sh
-node index.js -h
+node trady.js -h
 ```
 
 ##### `-b` / `--beep`
@@ -50,7 +50,7 @@ node index.js -h
 Sound alerts (default false)
 
 ```sh
-node index.js -b
+node trady.js -b
 ```
 
 ##### `-d` / `--delay <seconds>`
@@ -58,7 +58,7 @@ node index.js -b
 Interval time in seconds (default 10)
 
 ```sh
-node index.js -d 5
+node trady.js -d 5
 ```
 
 ##### `-i` / `--info`
@@ -66,7 +66,7 @@ node index.js -d 5
 Show info (default false)
 
 ```sh
-node index.js -i
+node trady.js -i
 ```
 
 ##### `-r` / `--repeat <times>`
@@ -74,7 +74,7 @@ node index.js -i
 0 repeats forever (default 1)
 
 ```sh
-node index.js -r 3
+node trady.js -r 3
 ```
 
 ##### `-s` / `--shuffle`
@@ -82,5 +82,5 @@ node index.js -r 3
 Shuffle pairs (default false)
 
 ```sh
-node index.js -s
+node trady.js -s
 ```
