@@ -79,6 +79,11 @@ const getChart = (candlesticks, configIndicators) => {
   }))
 }
 
+const getRandomColor = () => {
+  const colors = ['blue', 'cyan', 'gray', 'green', 'magenta', 'red', 'white', 'yellow']
+  return colors[Math.floor(Math.random() * colors.length)]
+}
+
 const log = message => {
   console.log(`${chalk[isWindows ? 'white' : 'gray'](format(new Date(), 'HH:mm'))} ${message}`)
 }
@@ -152,7 +157,7 @@ const run = async options => {
             options.beep && beeper(3)
             log(`${chalk.green(tick)} ${chalk.cyan(pair)}${chalk.magenta(arrowRight)}${chalk.cyan(timeframe)} ${chalk.green(triggers.join(' and '))}`)
           } else {
-            process.stdout.write(options.info ? `${divider ? chalk.yellow('|') : ''}${chalk[isWindows ? 'white' : 'gray'](pair)}${chalk.magenta(arrowRight)}${chalk[isWindows ? 'white' : 'gray'](timeframe)}` : chalk.blue('.'))
+            process.stdout.write(options.info ? `${divider ? chalk.yellow('|') : ''}${chalk[isWindows ? 'white' : 'gray'](pair)}${chalk.magenta(arrowRight)}${chalk[isWindows ? 'white' : 'gray'](timeframe)}` : chalk[getRandomColor()]('.'))
             divider = true
           }
         } catch (error) {
