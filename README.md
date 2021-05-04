@@ -4,8 +4,8 @@ Crypto market scanner.
 
 ### Requires
 
-- [Node v14.16.0](https://nodejs.org/)
-- npm v7.8.0
+- [Node v14.16.1](https://nodejs.org/)
+- npm v7.11.1
 - Node.js native addon build tool → [node-gyp](https://github.com/nodejs/node-gyp) (_required by [Tulip Node](https://www.npmjs.com/package/tulind)_)
 
 ### Download
@@ -36,14 +36,6 @@ $ npm run start # will run 'node trady.js -b -i -s'
 ```
 
 ### Options
-
-##### `-h` / `--help`
-
-Display help
-
-```sh
-node trady.js -h
-```
 
 ##### `-b` / `--beep`
 
@@ -83,4 +75,12 @@ Shuffle pairs (default false)
 
 ```sh
 node trady.js -s
+```
+
+##### `-h` / `--help`
+
+Display help
+
+```sh
+node trady.js -h
 ```
