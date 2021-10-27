@@ -1,17 +1,17 @@
-const arrayShuffle = require('array-shuffle')
-const beeper = require('beeper')
-const Binance = require('node-binance-api')
-const chalk = require('chalk')
-const dotenv = require('dotenv')
-const tulind = require('tulind')
-const { arrowRight, cross, line, tick } = require('figures')
-const { format, formatDistance } = require('date-fns')
-const { interval } = require('rxjs')
-const { program } = require('commander')
-const { repeat, take, tap } = require('rxjs/operators')
+import arrayShuffle from 'array-shuffle'
+import beeper from 'beeper'
+import Binance from 'node-binance-api'
+import chalk from 'chalk'
+import dotenv from 'dotenv'
+import figures from 'figures'
+import jsonfile from 'jsonfile'
+import tulind from 'tulind'
+import { format, formatDistance } from 'date-fns'
+import { interval } from 'rxjs'
+import { program } from 'commander'
+import { repeat, take, tap } from 'rxjs/operators'
 
-const strategies = require('./strategies')
-const { version } = require('./package.json')
+import strategies from './strategies.js'
 
 dotenv.config()
 
@@ -90,8 +90,9 @@ const log = message => {
 
 const run = async options => {
   try {
-    console.log(`${chalk.green(`Trady v${version}`)} ${chalk[isWindows ? 'white' : 'gray'](`${line} run with -h to output usage information`)}`)
-    console.log(chalk.yellow(`Like it? Buy me a ${isWindows ? 'beer' : '🍺'} :) 1B7owVfYhLjWLh9NWivQAKJHBcf8Doq54i (BTC)`))
+    const { version } = await jsonfile.readFile('./package.json')
+    console.log(`${chalk.green(`Trady v${version}`)} ${chalk[isWindows ? 'white' : 'gray'](`${figures.line} run with -h to output usage information`)}`)
+    console.log(chalk.yellow(`Like it? Buy me a ${isWindows ? 'beer' : '🍺'} :) bc1q6pxgjzrzqnuvnvfv5a8hk8yerfc3ry9v29wkh9 (BTC)`))
     const baseSymbols = Object.values(strategies).reduce((baseSymbols, strategy) => [...new Set(baseSymbols.concat(strategy.baseSymbols))], [])
     const prices = await binance.prices()
     const pairs = Object.keys(prices)
@@ -155,15 +156,15 @@ const run = async options => {
             divider && console.log('')
             divider = false
             options.beep && beeper(3)
-            log(`${chalk.green(tick)} ${chalk.cyan(pair)}${chalk.magenta(arrowRight)}${chalk.cyan(timeframe)} ${chalk.green(triggers.join(' and '))}`)
+            log(`${chalk.green(figures.tick)} ${chalk.cyan(pair)}${chalk.magenta(figures.arrowRight)}${chalk.cyan(timeframe)} ${chalk.green(triggers.join(' and '))}`)
           } else {
-            process.stdout.write(options.info ? `${divider ? chalk.yellow('|') : ''}${chalk[isWindows ? 'white' : 'gray'](pair)}${chalk.magenta(arrowRight)}${chalk[isWindows ? 'white' : 'gray'](timeframe)}` : chalk[getRandomColor()]('.'))
+            process.stdout.write(options.info ? `${divider ? chalk.yellow('|') : ''}${chalk[isWindows ? 'white' : 'gray'](pair)}${chalk.magenta(figures.arrowRight)}${chalk[isWindows ? 'white' : 'gray'](timeframe)}` : chalk[getRandomColor()]('.'))
             divider = true
           }
         } catch (error) {
           divider && console.log('')
           divider = false
-          log(`${chalk.red(cross)} ${error.toString()}`)
+          log(`${chalk.red(figures.cross)} ${error.toString()}`)
         } finally {
           if (index === keys.length - 1) {
             divider && console.log('')
@@ -176,7 +177,7 @@ const run = async options => {
         }
       })
   } catch (error) {
-    log(`${chalk.red(cross)} ${error.toString()}`)
+    log(`${chalk.red(figures.cross)} ${error.toString()}`)
     process.exit(0)
   }
 }

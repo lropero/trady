@@ -1,4 +1,4 @@
-module.exports = {
+const strategies = {
   /*
   example: {
     baseSymbols: ['BTC', 'USDT'],
@@ -92,3 +92,5 @@ module.exports = {
     }
   }
 }
+
+export default strategies
