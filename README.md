@@ -28,7 +28,7 @@ APISECRET=<YOUR_API_SECRET>
 ### Usage
 
 ```sh
-$ npm run start # will run 'node trady.js -b -i -s'
+$ npm run start # will run 'node trady.js -b -d 2 -i -s'
 ```
 
 ### Options
@@ -43,10 +43,10 @@ node trady.js -b
 
 ##### `-d` / `--delay <seconds>`
 
-Interval time in seconds (default 10)
+Interval time in seconds (default 5)
 
 ```sh
-node trady.js -d 5
+node trady.js -d 2
 ```
 
 ##### `-i` / `--info`

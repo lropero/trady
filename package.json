@@ -6,14 +6,14 @@
     "clean": "npx rimraf npm-*.log && npx rimraf package-lock.json && npx rimraf node_modules && npm cache verify",
     "lint": "npx prettier-standard --lint",
     "nuke": "npm run clean && npm install",
-    "start": "node trady.js -b -d 5 -i -s",
+    "start": "node trady.js -b -d 2 -i -s",
     "upgrade": "npx upgradeps -n"
   },
   "dependencies": {
     "array-shuffle": "^3.0.0",
     "beeper": "^3.0.0",
     "chalk": "^5.0.1",
-    "commander": "^9.0.0",
+    "commander": "^9.1.0",
     "date-fns": "^2.28.0",
     "dotenv": "^16.0.0",
     "figures": "^4.0.0",
