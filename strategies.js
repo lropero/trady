@@ -27,7 +27,7 @@ const strategies = {
   */
   bands: {
     // Triggers when price touched lower Bollinger band
-    baseSymbols: ['BUSD', 'USDT'],
+    baseSymbols: ['USDT'],
     configIndicators: {
       bb: {
         identifier: 'bbands',
@@ -64,7 +64,7 @@ const strategies = {
   },
   vsa: {
     // VSA's stopping volume
-    baseSymbols: ['BTC', 'BUSD', 'USDT'],
+    baseSymbols: ['BTC', 'USDT'],
     configIndicators: {
       range: {
         identifier: 'atr',
