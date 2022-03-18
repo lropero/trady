@@ -8,10 +8,6 @@ Crypto market scanner
 - npm v8.5.4
 - Node.js native addon build tool → [node-gyp](https://github.com/nodejs/node-gyp) (_required by [Tulip Node](https://www.npmjs.com/package/tulind)_)
 
-### Download
-
-- [trady-main.zip](https://github.com/lropero/trady/archive/main.zip) or `git clone https://github.com/lropero/trady.git`
-
 ### Installation
 
 ```sh
