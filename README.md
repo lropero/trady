@@ -1,11 +1,11 @@
 # Trady 📡 &middot; [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) ![GitHub package.json version](https://img.shields.io/github/package-json/v/lropero/trady)
 
-Crypto market scanner
+Crypto market scanner.
 
 ### Requires
 
-- [Node v16.14.0](https://nodejs.org/)
-- npm v8.5.4
+- [Node v16.17.0](https://nodejs.org/)
+- npm v8.18.0
 - Node.js native addon build tool → [node-gyp](https://github.com/nodejs/node-gyp) (_required by [Tulip Node](https://www.npmjs.com/package/tulind)_)
 
 ### Installation
