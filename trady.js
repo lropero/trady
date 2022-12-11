@@ -15,7 +15,7 @@ import strategies from './strategies.js'
 
 dotenv.config()
 
-const binance = new Binance().options({ APIKEY: process.env.APIKEY, APISECRET: process.env.APISECRET })
+const binance = new Binance().options({ APIKEY: process.env.APIKEY, APISECRET: process.env.APISECRET, family: 4 })
 const isWindows = process.platform === 'win32'
 
 const getCandlesticks = async (pair, timeframe, limit) => {
