@@ -92,7 +92,6 @@ const run = async options => {
   try {
     const { version } = await jsonfile.readFile('./package.json')
     console.log(`${chalk.green(`Trady v${version}`)} ${chalk[isWindows ? 'white' : 'gray'](`${figures.line} run with -h to output usage information`)}`)
-    console.log(chalk.yellow(`Like it? Buy me a ${isWindows ? 'beer' : '🍺'} :) bc1q6pxgjzrzqnuvnvfv5a8hk8yerfc3ry9v29wkh9 (BTC)`))
     const baseSymbols = Object.values(strategies).reduce((baseSymbols, strategy) => [...new Set(baseSymbols.concat(strategy.baseSymbols))], [])
     const prices = await binance.prices()
     const pairs = Object.keys(prices)
