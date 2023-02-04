@@ -1,6 +1,6 @@
 {
   "name": "trady",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "private": true,
   "description": "Crypto market scanner.",
   "license": "UNLICENSED",
@@ -11,13 +11,14 @@
     "clean": "npx rimraf package-lock.json && npx rimraf node_modules",
     "lint": "npx prettier-standard --lint",
     "nuke": "npm run clean && npm cache verify && npm install",
+    "sort": "npx sort-package-json",
     "start": "node trady.js -b -d 2 -i -s"
   },
   "dependencies": {
     "array-shuffle": "3.0.0",
     "beeper": "3.0.0",
     "chalk": "5.2.0",
-    "commander": "9.4.1",
+    "commander": "10.0.0",
     "date-fns": "2.29.3",
     "dotenv": "16.0.3",
     "figures": "5.0.0",
