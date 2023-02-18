@@ -192,13 +192,7 @@ const sliceIndicators = (indicators, index) => {
   }, {})
 }
 
-program
-  .option('-b, --beep', 'sound alerts (default false)')
-  .option('-d, --delay <seconds>', 'interval time in seconds (default 5)')
-  .option('-i, --info', 'show info (default false)')
-  .option('-r, --repeat <times>', '0 repeats forever (default 1)')
-  .option('-s, --shuffle', 'shuffle pairs (default false)')
-  .parse(process.argv)
+program.option('-b, --beep', 'sound alerts (default false)').option('-d, --delay <seconds>', 'interval time in seconds (default 5)').option('-i, --info', 'show info (default false)').option('-r, --repeat <times>', '0 repeats forever (default 1)').option('-s, --shuffle', 'shuffle pairs (default false)').parse(process.argv)
 
 const options = program.opts()
 

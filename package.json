@@ -8,8 +8,8 @@
   "type": "module",
   "scripts": {
     "audit": "npx upgradeps -v",
-    "clean": "npx rimraf package-lock.json && npx rimraf node_modules",
-    "lint": "npx prettier-standard --lint",
+    "clean": "npx rimraf node_modules && npx rimraf package-lock.json",
+    "lint": "npx prettier --write . && npx standard --fix",
     "nuke": "npm run clean && npm cache verify && npm install",
     "sort": "npx sort-package-json",
     "start": "node trady.js -b -d 2 -i -s"
@@ -26,5 +26,10 @@
     "node-binance-api": "0.13.1",
     "rxjs": "7.8.0",
     "tulind": "0.8.20"
+  },
+  "devDependencies": {
+    "prettier": "2.8.4",
+    "standard": "17.0.0",
+    "upgradeps": "2.0.5"
   }
 }
