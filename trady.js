@@ -145,7 +145,7 @@ const run = async options => {
           await Promise.all(
             strategyNames.map(async strategyName => {
               const strategy = strategies[strategyName]
-              const chart = await getChart(candlesticks, strategy.configIndicators)
+              const chart = await getChart(candlesticks, strategy.configIndicators || {})
               if (strategy.trigger(chart)) {
                 triggers.push(strategyName)
               }
